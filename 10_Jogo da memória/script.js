@@ -33,7 +33,7 @@ async function createCards() {
 
         cardBack.style.backgroundImage = `url(img/card-back.png)`;
 
-        const cardNumber = cards[i]; // <<< Aqui estava o erro!
+        const cardNumber = cards[i]; 
         const cardImage = ImagePairs[cardNumber].pop();
 
         cardFront.style.backgroundImage = `url(${cardImage})`;
@@ -46,9 +46,70 @@ async function createCards() {
     }
 }
 
+let flippedCards = 0;
+let firstCards, secondCard;
+let attempts = 0;
+
 function flipCard() {
-    console.log("virou")
+    if (flippedCards < 2 && !this.classList.contains("flip")) {
+        flippedCards++;
+        this.classList.add("flip");
+        if (flippedCards === 1) {
+            firstCards = this;
+        }else{
+            secondCard = this;
+            attempts++
+            updateAttempts();
+            checkForMatch();
+        }
+    }
 }
 
+function checkForMatch(){
+    const isMatch = 
+    firstCards.getAttribute("data-card") ===
+    secondCard.getAttribute("data-card");
+    isMatch ? disableCards() : unflipCards()
+}
+
+function disableCards(){
+    firstCards.removeEventListener("click", flipCard)
+    secondCard.removeEventListener("click", flipCard)
+
+    if (document.querySelectorAll(".card:not(.flip").length === 0) {
+       showCongratulationsMessage()
+    }
+
+    resetBoard()
+}
+
+function unflipCards() {
+   setTimeout(() =>{
+     firstCards.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    resetBoard()
+   },1000)
+}
+
+function resetBoard() {
+     [flippedCards, firstCards, secondCard] = [0, null, null];
+}
+
+function updateAttempts(){
+    const attemptsElements = document.querySelector(".attemps");
+    attemptsElements.textContent = `Tentativas: ${attempts}`
+}
+
+function showCongratulationsMessage(){
+    const congratulationsMessage = document.querySelector(".congratulations-container")
+
+    const congratulationsElement = document.createElement("p")
+
+    congratulationsElement.classList.add("congratulations")
+
+    congratulationsElement.textContent = `Parabens! Você venceu em ${attempts} tentativas`
+
+    congratulationsMessage.appendChild(congratulationsElement)
+}
 createCards();
 
