@@ -49,6 +49,33 @@ body{
     overflow: hidden;
 }
 
+.slider:before{
+    content: "";
+    z-index: 777;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+}
+
+
+.slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* escondido por padrão */
+  transition: opacity 0.5s ease;
+}
+
+.slider .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 .slider .carro-nome{
     position: absolute;
     top: 150px;
@@ -60,6 +87,10 @@ body{
     letter-spacing: 3px;
     white-space: nowrap;
     text-shadow: 0 5px 25px rgba(0, 0, 0, .5);
+}
+
+.slider.active .carro-nome{
+    opacity: 1;
 }
 
 .slider .slide-img {
@@ -74,6 +105,47 @@ body{
   height: 100%;
   object-fit: cover;
 }
+ 
+@keyframes animal-bg {
+  0% {
+    transform: scale(1);
+  }50%{
+    transform: scale(1.25);
+  }100%{
+    transform: scale(1);
+  }
+}
+
+.carro-nome {
+  position: absolute;
+  top: 150px;
+  left: 750px;
+  color: var(--first-color);
+  font-size: 7.5vw;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  text-shadow: 0 5px 25px rgba(0, 0, 0, .5);
+
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide.active .carro-nome {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.img-pista {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: animal-bg 17s linear infinite;
+}
+
 
 /*imagem carro*/
 .img-carro {
@@ -88,6 +160,11 @@ body{
   pointer-events: none;
   user-select: none;
   transform: scale(1) translateY(75px);
+  opacity: 1;
+}
+
+.slide.active .slide-img{
+    opacity: 1;
 }
 
 .slider .slide-text-content{
@@ -103,15 +180,15 @@ body{
     flex-direction: column;
 }
 
-.slider .slide-caption{
-    position: absolute;
-    top: 115px;
-    color: rgba(255, 255, 255, .7);
-    font-size: 1.15rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 0 5px 25px rgba(0, 0, 0, 1),
+.slider .slide-caption {
+  position: absolute;
+  top: 115px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow: 0 5px 25px rgba(0, 0, 0, 1);
 }
 
 .slider .slide-paragraph{
@@ -126,7 +203,7 @@ body{
     text-shadow: 0 5px 25px rgba(0, 0, 0, 1);
 }
 
-.slide-paragraph .read-more a{
+.slide-paragraph .read-more{
     color: rgba(255, 255, 255, .7);
     font-size: .85rem;
     font-weight: 700;
@@ -135,11 +212,11 @@ body{
     transition: color .3s ease;
 }
 
-.slide-paragraph .read-more a:hover{
+.slide-paragraph .read-more:hover{
     color: var(--hover-red-color);
 }
 
-#watch-video-btn {
+.watch-video-btn {
   position: absolute;
   bottom: 78px;
   background: none;
@@ -156,9 +233,168 @@ body{
   transition: .5 ease;
 }
 
-#watch-video-btn:hover{
+.watch-video-btn:hover{
     background: var(--first-color);
     color: var(--third-color);
     font-size: .85rem;
     font-weight: 500;
 }
+
+.slide-midia-icons{
+    z-index: 888;
+    position: absolute;
+    left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.slide-midia-icons .midia-links{
+    color: var(--first-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    opacity: .9;
+}
+
+.slide-midia-icons .midia-links:hover{
+    color: var(--hover-red-color);
+}
+
+.slider-navgation{
+    z-index: 888;
+    position: absolute;
+    bottom: 65px;
+    right: 100px;
+    display: flex;
+    gap: 70px;
+}
+
+.slider-navgation .prev-btn,
+ .slider-navgation .next-btn{
+    color: var(--first-color);
+    font-size: 1.1rem;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: .3 ease;
+}
+
+.slider-navgation i{
+    font-size: 2.5rem;
+}
+
+.slider-navgation .prev-btn:hover,
+ .slider-navgation .next-btn:hover{
+    color: var(--hover-red-color);
+ }
+
+ .slide-pagination{
+    z-index: 888;
+    position: absolute;
+    right: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+ }
+
+ .slide-pagination .slide-btn{
+    width: 9px;
+    height: 25px;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: 0 5px 25px rgba(2, 2, 2, .25);
+    cursor: pointer;
+ }
+
+ .slide-pagination .slide-btn:hover{
+    background: rgba(255, 255, 255, .85);
+ }
+
+ .slide-indicator-bars{
+    z-index: 888;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+ }
+
+ .slide-indicator-bars .indicator-bar{
+    position: absolute;
+    bottom: 0;
+    width: 25%;
+    height: 2px;
+    background: var(--hover-red-color);
+ }
+
+ .slide-video-modal{
+    display: none;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+ }
+
+
+ .video-modal-content{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .slide-video-modal .video-close-btn{
+    z-index: 999;
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    color: var(--first-color);
+    font-size: 2rem;
+    cursor: pointer;
+ }
+
+ .slide-video-modal .video-close-btn:hover{
+    color: var(--second-color);
+ }
+
+ .slide-video-modal .video-card{
+    position: relative;
+    background: var(--first-color);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .5);
+    overflow: hidden;
+ }
+
+ .video-card .video-paragraph{
+    color: var(--third-color);
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 20px 25px;
+ }
+
+ .video-card .read-more{
+    color: var(--third-color);
+    font-size: .85rem;
+    font-size: 600;
+    text-decoration: none;
+    white-space: nowrap;
+ }
+
+ .video-card .read-more:hover{
+    color: var(--second-color);
+ }

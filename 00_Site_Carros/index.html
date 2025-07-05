@@ -1,28 +1,139 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-        <title>Meu SIte Carros</title>
-    </head>
-    <body>
-        <!--Main section-->
-        <section class="main-section">
-            <a href="#" class="logo">Carros.</a>
-            <div class="slider">
-                <div class="slide-img">
-            <img src="imagens/pistas/pista2.png" alt="pista1" class="img-pista">
-            <h1 class="carro-nome">Ford GT</h1>
-            <img src="imagens/carros/pngtree-red-sports-car-png-image_13580057.png" alt="red" class="img-carro">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Site Carros</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+  />
+</head>
+<body>
+  <section class="main-section">
+    <a href="#" class="logo">Carros.</a>
+    <div class="slider">
+      <!-- Slide Example -->
+      <div class="slide active">
+        <div class="slide-img">
+          <img src="imagens/pistas/pista2.png" alt="pista1" class="img-pista" />
+          <h1 class="carro-nome">Ford GT</h1>
+          <img src="imagens/carros/pngtree-red-sports-car-png-image_13580057.png" alt="red" class="img-carro" />
+        </div>
+        <div class="slide-text-content">
+          <h3 class="slide-caption">Super Esportivos</h3>
+          <p class="slide-paragraph">O Ford GT é conhecido por seu desempenho excepcional, com modelos preparados atingindo velocidades impressionantes, como 453km. <span class="paragraph-anchor-tag"><a href="#" class="read-more">Ler mais...</a></span></p>
+          <button class="watch-video-btn">Ver Video</button>
+        </div>
+        <div class="slide-video-modal">
+          <i class="bi bi-x-circle video-close-btn"></i>
+          <div class="video-modal-content">
+            <div class="video-card">
+              <video src="videos/video slide 1.mp4" class="carro-video" controls autoplay loop></video>
+              <p class="video-paragraph">O Ford GT é conhecido por seu desempenho excepcional, com modelos preparados atingindo velocidades impressionantes, como 453km.<span class="video-anchor-tag"><a href="#" class="read-more"> Ler mais</a></span></p>
             </div>
-                <div class="slide-text-content">
-                    <h3 class="slide-caption">Super Esportivos</h3>
-                    <p class="slide-paragraph">O Ford GT é conhecido por seu desempenho excepcional, com modelos preparados atingindo velocidades impressionantes, como 453km. <span class="read-more"><a href="#">Ler mais...</a></span></p>
-                    <button id="watch-video-btn">Ver Video</button>
+          </div>
+        </div>
+      </div>
+
+       <!--Slide start-->
+                <div class="slide">
+                    <div class="slide-img">
+                                <img src="imagens/pistas/pista3.png" alt="pista3" class="img-pista">
+                                <h1 class="carro-nome">Lotus Elise</h1>
+                                <img src="imagens/carros/pngtree-sleek-sports-car-symbolizing-speed-luxury-and-modern-innovation-png-image_16404521.png" alt="red" class="img-carro">
+                                </div>
+                    <div class="slide-text-content">
+                        <h3 class="slide-caption">Super Esportivos</h3>
+                        <p class="slide-paragraph">A combinação de leveza e bom motor permitia ao Elise oferecer um desempenho esportivo notável, com acelerações rápidas e boa dirigibilidade. <span class="paragraph-anchor-tag"><a href="#" class="read-more">Ler mais...</a></span></p>
+                        <button class="watch-video-btn">Ver Video</button>
+                    </div>
+                    <div class="slide-video-modal">
+                        <i class="bi bi-x-circle video-close-btn"></i>
+                        <div class="video-modal-content">
+                            <div class="video-card">
+                                <video src="videos/video slide 1.mp4" class="carro-video">controls autoplay loop</video>
+                                <p class="video-paragraph">A combinação de leveza e bom motor permitia ao Elise oferecer um desempenho esportivo notável, com acelerações rápidas e boa dirigibilidade.<span class="video-anchor-tag"></span><a href="#" class="read-more"> Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </body>
+                <!--slid end-->
+
+                <!--Slide start-->
+                <div class="slide">
+                    <div class="slide-img">
+                                <img src="imagens/pistas/pista4.png" alt="pista1" class="img-pista">
+                                <h1 class="carro-nome">Rimac Nevera</h1>
+                                <img src="imagens/carros/pngtree-sports-car-icon-of-speed-and-style-png-image_14224898.png" alt="red" class="img-carro">
+                                </div>
+                    <div class="slide-text-content">
+                        <h3 class="slide-caption">Super Esportivos</h3>
+                        <p class="slide-paragraph">O Nevera possui quatro motores elétricos que combinados geram 1.914 cavalos de potência, permitindo uma aceleração de 0 a 100 km/h em cerca de 1,97 segundos e atingindo uma velocidade máxima de 412 km/h. <span class="paragraph-anchor-tag"><a href="#" class="read-more">Ler mais...</a></span></p>
+                        <button class="watch-video-btn">Ver Video</button>
+                    </div>
+                    <div class="slide-video-modal">
+                        <i class="bi bi-x-circle video-close-btn"></i>
+                        <div class="video-modal-content">
+                            <div class="video-card">
+                                <video src="videos/video slide 1.mp4" class="carro-video">controls autoplay loop</video>
+                                <p class="video-paragraph">O Nevera possui quatro motores elétricos que combinados geram 1.914 cavalos de potência, permitindo uma aceleração de 0 a 100 km/h em cerca de 1,97 segundos e atingindo uma velocidade máxima de 412 km/h.<span class="video-anchor-tag"></span><a href="#" class="read-more"> Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--slid end-->
+
+                 <!--Slide start-->
+                <div class="slide">
+                    <div class="slide-img">
+                                <img src="imagens/pistas/pista 5.png" alt="pista1" class="img-pista">
+                                <h1 class="carro-nome">McLaren Sabre</h1>
+                                <img src="imagens/carros/carro-esporte-em-fundo-transparente-renderizacao-3d-ilustracao_494250-46537.png" alt="red" class="img-carro">
+                                </div>
+                    <div class="slide-text-content">
+                        <h3 class="slide-caption">Super Esportivos</h3>
+                        <p class="slide-paragraph">O Sabre atinge uma velocidade máxima de 351 km/h e possui um design aerodinâmico aprimorado. Apenas 15 unidades foram produzidas, todas personalizadas para cada cliente.<span class="paragraph-anchor-tag"><a href="#" class="read-more">Ler mais...</a></span></p>
+                        <button class="watch-video-btn">Ver Video</button>
+                    </div>
+                    <div class="slide-video-modal">
+                        <i class="bi bi-x-circle video-close-btn"></i>
+                        <div class="video-modal-content">
+                            <div class="video-card">
+                                <video src="videos/video slide 1.mp4" class="carro-video">controls autoplay loop</video>
+                                <p class="video-paragraph">O Sabre atinge uma velocidade máxima de 351 km/h e possui um design aerodinâmico aprimorado. Apenas 15 unidades foram produzidas, todas personalizadas para cada cliente.<span class="video-anchor-tag"></span><a href="#" class="read-more"> Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--slid end-->
+      <!-- Adicione os outros slides com a mesma estrutura -->
+    </div>
+
+    <div class="slide-midia-icons">
+      <a href="#" class="midia-links"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="midia-links"><i class="bi bi-whatsapp"></i></a>
+      <a href="#" class="midia-links"><i class="bi bi-twitter-x"></i></a>
+    </div>
+
+    <div class="slider-navgation">
+      <div class="prev-btn"><i class="bi bi-chevron-left"></i>Prev</div>
+      <div class="next-btn">Next<i class="bi bi-chevron-right"></i></div>
+    </div>
+
+    <div class="slide-pagination">
+      <div class="slide-btn active"></div>
+      <div class="slide-btn"></div>
+      <div class="slide-btn"></div>
+    </div>
+
+    <div class="slide-indicator-bars">
+      <div class="indicator-bar active"></div>
+      <div class="indicator-bar"></div>
+      <div class="indicator-bar"></div>
+    </div>
+  </section>
+</body>
 </html>
