@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+html{
+    height: 100vh;
+}
+
 body{
     background-image: url(imgs/stars_space_galaxy_117958_1280x720.jpg);
     background-position: center;
