@@ -12,7 +12,7 @@ const filterBtn = document.querySelector("#filter-select");
 let oldInputValue;
 
 //Funções
-const saveTodo = (text) => {
+const saveTodo = (text, done = 0, save = 1) => {
 
     const todo = document.createElement("div")
     todo.classList.add("todo");
@@ -35,6 +35,15 @@ const saveTodo = (text) => {
     deletBtn.classList.add("remove-todo");
     deletBtn.innerHTML = '<i class="bi bi-trash3"></i>';
     todo.appendChild(deletBtn);
+
+    //Utilizando dados da localStorage
+    if (done) {
+        todo.classList.add("done")
+    }
+
+    if (save) {
+        saveTodoLocalStore({text, done})
+    }
     
     todoList.appendChild(todo);
 
@@ -61,6 +70,8 @@ const updateTodo = (text) =>{
 
         if (todoTitle.innerText === oldInputValue) {
             todoTitle.innerText = text
+
+            updateTodoLocalStorage(oldInputValue, text)
         }
     })
 }
@@ -136,10 +147,14 @@ if (parentEl && parentEl.querySelector("h3")) {
 if(targetEl.classList.contains("finish-todo")){
 
     parentEl.classList.toggle("done")
+
+    updateTodoStatusLocalStorage(todoTitle)
 }
 
 if (targetEl.classList.contains("remove-todo")) {
     parentEl.remove()
+
+    removeTodoLocalStorage(todoTitle)
 }
 
 if(targetEl.classList.contains("edit-todo")){
@@ -189,3 +204,62 @@ filterBtn.addEventListener("change", (e)=>{
     filterTodo(filterValue);
     
 })
+
+//Local Storage
+const getTodoLocalStorage = () =>{
+    const todos = JSON.parse(localStorage.getItem("todos")) || []
+
+    return todos
+}
+
+const loadTodo = () =>{
+    const todos = getTodoLocalStorage()
+    
+    todos.forEach((todo) =>{
+        saveTodo(todo.text, todo.done, 0)
+    })
+}
+
+
+const saveTodoLocalStore = (todo) => {
+
+const todos = getTodoLocalStorage()
+
+todos.push(todo)
+
+localStorage.setItem("todos", JSON.stringify(todos))
+
+
+}
+
+const removeTodoLocalStorage = (todoText) => {
+
+    const todos = getTodoLocalStorage()
+
+    const filterredTodos = todos.filter((todo) => todo.text !== todoText)
+
+    localStorage.setItem("todos", JSON.stringify(filterredTodos))
+}
+
+const updateTodoStatusLocalStorage = (todoText) => {
+
+    const todos = getTodoLocalStorage()
+
+    todos.map((todo) => todo.text === todoText ? (todo.done = !todo.done) : null)
+
+    localStorage.setItem("todos", JSON.stringify(todos))
+
+}
+
+const updateTodoLocalStorage = (todoOldText, todoNewText) => {
+
+    const todos = getTodoLocalStorage()
+
+    todos.map((todo) => todo.text === todoOldText ? (todo.text = todoNewText) : null)
+
+    localStorage.setItem("todos", JSON.stringify(todos))
+
+}
+
+loadTodo()
+
